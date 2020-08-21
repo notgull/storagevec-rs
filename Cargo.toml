@@ -1,0 +1,15 @@
+[package]
+name = "storagevec"
+version = "0.1.0"
+authors = ["not_a_seagull <jtnunley01@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+maybe-uninit = "2"
+smallvec = { version = "1.4.2", optional = true }
+tinymap = "0.1.0"
+tinyvec = { version = "0.4.1", features = ["nightly_const_generics"] }
+
+[features]
+default = ["alloc"]
+alloc = ["smallvec"]
