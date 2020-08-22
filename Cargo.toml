@@ -5,11 +5,11 @@ authors = ["not_a_seagull <jtnunley01@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-maybe-uninit = "2"
-smallvec = { version = "1.4.2", optional = true }
-tinymap = "0.1.0"
+hashbrown = { version = "0.8.2", optional = true }
+tinymap = "0.2.2"
 tinyvec = { version = "0.4.1", features = ["nightly_const_generics"] }
 
 [features]
 default = ["alloc"]
-alloc = ["smallvec"]
+alloc = ["hashbrown"]
+stack = ["tinyvec/alloc"]
