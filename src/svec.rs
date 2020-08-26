@@ -16,7 +16,7 @@ use core::marker::PhantomData;
 #[cfg(all(feature = "alloc", feature = "stack"))]
 use tinyvec::{TinyVec, TinyVecIterator};
 
-use core::{iter, ops};
+use core::{fmt, iter, ops};
 
 // helper struct to wrap MaybeUninit in a Default-compatible layer
 // this is your fault: https://github.com/rust-lang/rust/issues/49147
@@ -58,12 +58,27 @@ impl<T> UninitContainer<T> {
     unsafe fn slice_get_mut(this: &mut [Self]) -> &mut [T] {
         &mut *(this as *mut [Self] as *mut [T])
     }
+
+    #[inline]
+    unsafe fn get_ref(this: &Self) -> &T {
+        &*(this as *const Self as *const T)
+    }
 }
 
 #[cfg(any(not(feature = "alloc"), feature = "stack"))]
 impl<T> Default for UninitContainer<T> {
     fn default() -> Self {
         Self::uninit()
+    }
+}
+
+// we only call fmt::Debug::fmt on initialized elements
+#[cfg(any(not(feature = "alloc"), feature = "stack"))]
+impl<T: fmt::Debug> fmt::Debug for UninitContainer<T> {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        // SAFETY: only called on initialized elements
+        fmt::Debug::fmt(unsafe { UninitContainer::get_ref(self) }, f)
     }
 }
 
@@ -440,5 +455,12 @@ impl<T, const N: usize> Default for StorageVec<T, N> {
     #[inline]
     fn default() -> Self {
         Self::new()
+    }
+}
+
+impl<T: fmt::Debug, const N: usize> fmt::Debug for StorageVec<T, N> {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        fmt::Debug::fmt(&(self.0).0, f)
     }
 }
