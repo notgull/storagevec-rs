@@ -6,9 +6,8 @@
 //! The idea behind this crate is to allow crates that require vector or map types to be able
 //! to be `no_std` by allowing heap storage to be toggled on or off via features.
 
-#![allow(incomplete_features)]
 #![cfg_attr(all(feature = "alloc", not(feature = "stack")), forbid(unsafe_code))]
-#![feature(const_generics)]
+#![feature(min_const_generics)]
 #![feature(maybe_uninit_slice_assume_init)]
 #![feature(maybe_uninit_uninit_array)]
 #![no_std]
