@@ -10,7 +10,7 @@ repository = "https://github.com/not-a-seagull/storagevec-rs"
 
 [dependencies]
 hashbrown = { version = "0.8.2", optional = true }
-tinymap = "0.2.2"
+tinymap = "0.2.3"
 tinyvec = { version = "0.4.1", features = ["nightly_const_generics"] }
 
 [features]
