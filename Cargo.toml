@@ -1,6 +1,6 @@
 [package]
 name = "storagevec"
-version = "0.1.2"
+version = "0.1.3"
 authors = ["not_a_seagull <jtnunley01@gmail.com>"]
 edition = "2018"
 description = "Feature-gated heap-based/stack-based map and vector structures."

@@ -16,7 +16,7 @@ use core::marker::PhantomData;
 #[cfg(all(feature = "alloc", feature = "stack"))]
 use tinyvec::{TinyVec, TinyVecIterator};
 
-use core::{fmt, iter, ops};
+use core::{fmt, iter, ops::{self, RangeBounds}};
 
 // helper struct to wrap MaybeUninit in a Default-compatible layer
 // this is your fault: https://github.com/rust-lang/rust/issues/49147
@@ -291,6 +291,12 @@ impl<T, const N: usize> StorageVec<T, N> {
     fn remove_impl(&mut self, index: usize) -> T {
         // SAFETY: See "pop" above
         unsafe { UninitContainer::assume_init((self.0).0.remove(index)) }
+    }
+
+    /// Create a drain iterator for this vector.
+    #[inline]
+    pub fn drain<R: RangeBounds<usize>>(&mut self, range: R) -> impl Iterator<Item = T> + '_ {
+        (self.0).0.drain(range)
     }
 }
 
