@@ -1,6 +1,6 @@
 [package]
 name = "storagevec"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["not_a_seagull <jtnunley01@gmail.com>"]
 edition = "2018"
 description = "Feature-gated heap-based/stack-based map and vector structures."
@@ -10,8 +10,8 @@ repository = "https://github.com/not-a-seagull/storagevec-rs"
 
 [dependencies]
 hashbrown = { version = "0.8.2", optional = true }
-tinymap = "0.2.3"
-tinyvec = { version = "0.4.1", features = ["nightly_const_generics"] }
+tinymap = "0.2.4"
+tinyvec = { version = "1.0.0", features = ["nightly_const_generics"] }
 
 [features]
 default = ["alloc"]
