@@ -8,7 +8,6 @@
 
 #![cfg_attr(all(feature = "alloc", not(feature = "stack")), forbid(unsafe_code))]
 #![feature(min_const_generics)]
-#![feature(maybe_uninit_slice_assume_init)]
 #![feature(maybe_uninit_uninit_array)]
 #![no_std]
 #![warn(clippy::pedantic)]
