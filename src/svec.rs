@@ -150,7 +150,7 @@ impl<T: Default, const N: usize> StorageVec<T, N> {
     #[cfg(not(feature = "alloc"))]
     #[inline]
     fn try_insert_impl(&mut self, item: T, index: usize) -> Result<(), T> {
-        match (self.0).0.try_insert(index, UninitContainer::new(item)) {
+        match (self.0).0.try_insert(index, item) {
             None => Ok(()),
             Some(reject) => Err(reject),
         }
@@ -245,6 +245,7 @@ impl<T: Default, const N: usize> Iterator for StorageVecIterator<T, N> {
 
 impl<T: Default, const N: usize> ExactSizeIterator for StorageVecIterator<T, N> {}
 
+#[cfg(not(feature = "stack"))]
 impl<T: Default, const N: usize> DoubleEndedIterator for StorageVecIterator<T, N> {
     #[inline]
     fn next_back(&mut self) -> Option<T> {
