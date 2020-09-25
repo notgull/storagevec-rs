@@ -1,5 +1,6 @@
 # storagevec
 
+[![Build Status](https://dev.azure.com/jtnunley01/gui-tools/_apis/build/status/not-a-seagull.storagevec-rs?branchName=master)](https://dev.azure.com/jtnunley01/gui-tools/_build/latest?definitionId=10&branchName=master)
 [![crates.io](https://img.shields.io/crates/v/storagevec)](https://crates.io/crates/storagevec)
 [![docs.rs](https://docs.rs/storagevec/badge.svg)](https://docs.rs/storagevec)
 
