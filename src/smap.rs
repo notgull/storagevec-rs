@@ -16,6 +16,7 @@ use core::{fmt, hash::Hash, iter};
 /// A map object that with either use the tinymap `TinyMap` or the hashbrown `HashMap` as a
 /// backing implementation. It will use the `alloc` feature to control this.
 #[repr(transparent)]
+#[deprecated = "This crate is now deprecated."]
 pub struct StorageMap<K: Eq + Ord + Hash, V, const N: usize>(SMImpl<K, V, N>);
 
 #[cfg(feature = "alloc")]
