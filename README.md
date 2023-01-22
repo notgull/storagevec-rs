@@ -1,3 +1,9 @@
+# Deprecated
+
+I originally created this crate because I wanted to create a graphics framework that didn't allocate at all on the hot path. Looking back, I kind of cringe when I think about it (as well as the very loose and fast examples here). As far as I know no one is using this crate, and I don't plan on maintaining it. If you want to use this crate, feel free to fork it and make it your own, but know that it's probably a bad idea.
+
+ - John "notgull" Nunley
+
 # storagevec
 
 [![Build Status](https://dev.azure.com/jtnunley01/gui-tools/_apis/build/status/not-a-seagull.storagevec-rs?branchName=master)](https://dev.azure.com/jtnunley01/gui-tools/_build/latest?definitionId=10&branchName=master)

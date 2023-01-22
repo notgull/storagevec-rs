@@ -23,6 +23,7 @@ use core::{
 /// or the tinyvec `TinyVec` as a backing implementation. It will use the `alloc` and `stack`
 /// features to control this.
 #[repr(transparent)]
+#[deprecated = "This crate is now deprecated."]
 pub struct StorageVec<T: Default, const N: usize>(SVImpl<T, N>);
 
 #[cfg(not(feature = "alloc"))]
